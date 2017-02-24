@@ -1,0 +1,6 @@
+Policy,Protocol,Destination (CIDR),Port,Comment
+deny,tcp,192.168.4.0/24,Any,Cisco Live
+deny,udp,192.168.3.0/24,Any,Europe
+deny,tcp,192.168.2.0/24,Any,2017
+allow,udp,192.168.1.0/24,Any,Meraki API
+deny,tcp,1.1.1.0/24,Any,a note about the rule
