@@ -45,7 +45,7 @@ docker run --rm -it -v $PWD:/data/export/ robertcsapo/cisco-meraki-fw-ap-rules-a
 ```
 ## Build
 ```
-docker build -t CHANGEME:latest .
+docker build -t robertcsapo/cisco-meraki-fw-ap-rules-api:latest .
 ```
 # License
 MIT
