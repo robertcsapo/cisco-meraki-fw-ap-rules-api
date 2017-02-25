@@ -1,6 +1,8 @@
 # Cisco Meraki Firewall AP Rules API
 Python script that list/update your Cisco Meraki AP (Wireless) Firewall rules
 
+![](https://raw.githubusercontent.com/robertcsapo/cisco-meraki-fw-ap-rules-api/master/demo.gif)
+
 # Features
 
 - List your current firewall rules on a SSID
