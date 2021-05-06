@@ -161,7 +161,6 @@ def meraki_put(url,meraki_api_key,payload):
         meraki_ap_fw_rules("post")
         return json_data
     else:
-        print("Failed")
         if meraki_debug == "1":
             print(response.text)
         sys.exit("Failed: Code %s" % response.status_code)
@@ -170,16 +169,9 @@ def meraki_put(url,meraki_api_key,payload):
 def meraki_ap_fw_rules(status):
     json_fw_ap_list = meraki_requests("/networks/%s/ssids/%s/l3FirewallRules" % (args.network,args.ssid),meraki_api_key, "enable")
     global fw_ap_list
-    key=0
     for item in json_fw_ap_list:
-        key +=1
-        # If there's only 2 firewall rules, then that's propably only the default meraki rules (which has their own string vars)
-        if len(json_fw_ap_list) == 2:
-            fw_ap_list.append([item["policy"],item["proto"],item["dst_cidr"],item["dst_port"],item["comment"]])
-        else:
-            # Split by , (csv support)
-            fw_ap_list_raw.append([item["policy"]+','+item["protocol"]+','+item["destCidr"]+','+item["destPort"]+','+item["comment"]])
-            fw_ap_list.append([item["policy"],item["protocol"],item["destCidr"],item["destPort"],item["comment"]])
+        fw_ap_list_raw.append([item["policy"]+','+item["protocol"]+','+item["destCidr"]+','+item["destPort"]+','+item["comment"]])
+        fw_ap_list.append([item["policy"],item["protocol"],item["destCidr"],item["destPort"],item["comment"]])
     print(tabulate(fw_ap_list,headers=['Policy','Protocol','Destination','Port','Comment'],tablefmt="rst"))
     if status == "pre":
         print("")
